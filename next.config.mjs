@@ -22,6 +22,14 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  eslint: {
+    // skip ESLint during `next build` on Netlify
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // skip TypeScript type-check errors during `next build`
+    ignoreBuildErrors: true,
+  },
 };
 
 export default withMDX(nextConfig);

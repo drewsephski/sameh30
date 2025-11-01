@@ -1,71 +1,124 @@
 ---
-title: "Create, edit and delete blog posts"
-summary: "Create, edit and delete posts in the blog section of your Magic Portfolio."
+title: "Creating Technical Content for Petroleum Engineers"
+summary: "Develop compelling technical content that showcases your petroleum engineering expertise and industry insights."
 publishedAt: "2025-03-17"
-tag: "Magic Portfolio"
+tag: "Content Strategy"
 ---
 
-## Manage posts
+## Technical Content Management
 
-You can create, edit and delete posts by adding, modifying or removing `*.mdx` files in the `src/app/blog/posts` directory.
+You can create, edit and manage technical content by adding, modifying or removing `*.mdx` files in the `src/app/blog/posts` directory.
 
-## Frontmatter
+## Content Strategy
 
-The frontmatter is used to set the post's metadata: title, description, image, and tags. It's used in the post's page and in meta- and open graph tags.
+Develop content that demonstrates your petroleum engineering expertise:
 
-<CodeBlock
-    marginBottom="16"
-    codes={[
-      {
-        code:
-`---
-title: "Arriving to a new milestone in my career"
-publishedAt: "2024-04-08"
-image: "/images/gallery/img-02.jpg"
-summary: "Every career is a journey, filled with challenges, growth, and those significant moments that mark a shift in our path."
-tag: "Journal"
----`,
-        language: "tsx",
-        label: "src/app/blog/posts/post-1.mdx"
-      }
-    ]}
-/>
+### Technical Articles
 
-## MDX syntax
+Focus on topics that showcase your professional knowledge:
 
-You can use MDX to write the content of your posts. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
+```markdown
+---
+title: "Optimizing Artificial Lift Systems for Enhanced Recovery"
+publishedAt: "2025-04-08"
+image: "/images/sam.png"
+summary: "A comprehensive analysis of artificial lift optimization strategies for maximizing oil recovery in mature fields."
+tag: "Production Engineering"
+---
+```
 
-## Custom components
+## Content Types for Petroleum Engineers
 
-You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.
+### Technical Deep Dives
 
-<CodeBlock
-    marginBottom="16"
-    highlight="11-12"
-    codes={[
-      {
-        code:
-`const components = {
-    p: createParagraph as any,
-    h1: createHeading(1) as any,
-    h2: createHeading(2) as any,
-    h3: createHeading(3) as any,
-    h4: createHeading(4) as any,
-    h5: createHeading(5) as any,
-    h6: createHeading(6) as any,
-    img: createImage as any,
-    a: CustomLink as any,
-    Table,
-    CodeBlock,
-};`,
-        language: "tsx",
-        label: "src/components/mdx.tsx"
-      }
-    ]}
-/>
+- **Production Optimization**: Real-world case studies and optimization strategies
+- **Reservoir Engineering**: Advanced recovery techniques and field development
+- **Data Analytics**: Machine learning applications in petroleum operations
+- **Industry Trends**: Analysis of emerging technologies and market changes
 
-As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+### Practical Applications
 
-## Hot reload
+Document your engineering projects and solutions:
 
-Hot reload of MDX files is currently not supported, but we're working on it.
+### Case Study Template
+
+```markdown
+---
+title: "Field Development Project Optimization"
+publishedAt: "2025-03-17"
+summary: "Case study of reservoir optimization project that increased production by 25% through data-driven analysis."
+tags:
+  - "Reservoir Engineering"
+  - "Data Analytics"
+  - "Project Management"
+image: "/images/sam.png"
+team:
+  - name: "Sam Stehno"
+    role: "Lead Production Engineer"
+    linkedIn: "https://www.linkedin.com/in/sam-stehno/"
+---
+```
+
+## Technical Writing Guidelines
+
+### Structure Your Content
+
+1. **Executive Summary**: Brief overview of the technical problem and solution
+2. **Problem Definition**: Clear description of the engineering challenge
+3. **Methodology**: Detailed approach and technical analysis
+4. **Results**: Quantified outcomes and performance improvements
+5. **Lessons Learned**: Key insights and recommendations
+
+### Include Technical Details
+
+- **Data Analysis**: Charts, graphs, and statistical analysis
+- **Engineering Calculations**: Mathematical models and formulas
+- **Equipment Specifications**: Technical parameters and performance data
+- **Economic Analysis**: Cost-benefit considerations and ROI calculations
+
+## Industry-Specific Content
+
+### Production Engineering Topics
+
+- **Artificial Lift Optimization**: ESP, gas lift, and rod pump systems
+- **Flow Assurance**: Pipeline integrity and production chemistry
+- **Well Testing**: Production testing and reservoir characterization
+- **Enhanced Oil Recovery**: CO2 injection and chemical flooding
+
+### Data Science Applications
+
+- **Predictive Maintenance**: Machine learning for equipment monitoring
+- **Production Forecasting**: Statistical models and trend analysis
+- **Reservoir Simulation**: Numerical modeling and history matching
+- **Economic Optimization**: Investment analysis and project evaluation
+
+## Professional Engagement
+
+### Technical Presentations
+
+Transform your content into speaking opportunities:
+
+- **SPE Conferences**: Present technical papers at industry events
+- **Webinars**: Host educational sessions for professional development
+- **Panel Discussions**: Participate in industry expert panels
+- **Training Sessions**: Develop internal training materials
+
+### Knowledge Sharing
+
+Build your professional network through content:
+
+- **Peer Review**: Collaborate with colleagues on technical writing
+- **Mentorship**: Share knowledge with junior engineers
+- **Industry Forums**: Participate in technical discussions
+- **Blog Comments**: Engage with industry publications and blogs
+
+## Content Performance Metrics
+
+Track the impact of your technical content:
+
+- **Technical Accuracy**: Peer feedback and industry validation
+- **Professional Recognition**: Speaking invitations and conference participation
+- **Career Advancement**: Job opportunities and promotions
+- **Industry Impact**: Citations and references in technical literature
+
+This approach ensures your content strategy effectively showcases your petroleum engineering expertise while providing valuable insights to the industry community.

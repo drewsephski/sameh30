@@ -1,78 +1,196 @@
 ---
-title: "Create,edit and delete projects"
-summary: "Create, edit and delete projects in the work section of your Magic Portfolio."
+title: "Showcasing Engineering Projects and Case Studies"
+summary: "Create compelling project showcases that demonstrate your petroleum engineering expertise and project management capabilities."
 publishedAt: "2025-04-19"
-tag: "Magic Portfolio"
+tag: "Project Management"
 ---
 
-## Manage projects
+## Project Portfolio Management
 
-You can create, edit and delete projects by adding, modifying or removing `*.mdx` files in the `src/app/work/projects` directory.
+You can create, edit and manage engineering projects by adding, modifying or removing `*.mdx` files in the `src/app/work/projects` directory.
 
-## Frontmatter
+## Project Documentation Standards
 
-The frontmatter is used to set the project's metadata: title, description, image, and tags. It's used in the project's page and in meta- and open graph tags.
+Document your engineering projects with professional presentation:
 
-<CodeBlock
-    marginBottom="16"
-    codes={[
-      {
-        code:
-`---
-title: "Developing a design system for indie creators"
+### Technical Project Template
+
+```markdown
+---
+title: "Enhanced Oil Recovery Optimization Project"
 publishedAt: "2025-03-17"
-summary: "Once UI is a design system that empowers indie creators, small teams, and startups to build web applications."
+summary: "Comprehensive reservoir optimization project that increased oil recovery by 18% through advanced injection strategies and data analytics."
+tags:
+  - "Reservoir Engineering"
+  - "Enhanced Oil Recovery"
+  - "Data Analytics"
 images:
-  - "/images/projects/project-01/cover-02.jpg"
-  - "/images/projects/project-01/image-03.jpg"
+  - "/images/projects/reservoir-optimization-01.jpg"
+  - "/images/projects/reservoir-optimization-02.jpg"
 team:
-  - name: "Lorant One"
-    role: "Software Engineer"
-    avatar: "/images/avatar.jpg"
-    linkedIn: "https://www.linkedin.com/company/once-ui/"
-link: "https://once-ui.com/"
----`,
-        language: "tsx",
-        label: "src/app/work/projects/project-1.mdx"
-      }
-    ]}
-/>
+  - name: "Sam Stehno"
+    role: "Lead Production Engineer"
+    linkedIn: "https://www.linkedin.com/in/sam-stehno/"
+  - name: "Reservoir Engineering Team"
+    role: "Technical Specialists"
+technologies:
+  - "Python Analytics"
+  - "Reservoir Simulation"
+  - "Statistical Analysis"
+---
+```
 
-## MDX syntax
+## Engineering Project Categories
 
-You can use MDX to write the content of your projects. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
+### Production Engineering Projects
 
-## Custom components
+Document projects that showcase production optimization expertise:
 
-You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.
+#### Artificial Lift Systems
 
-<CodeBlock
-    marginBottom="16"
-    highlight="11-12"
-    codes={[
-      {
-        code:
-`const components = {
-    p: createParagraph as any,
-    h1: createHeading(1) as any,
-    h2: createHeading(2) as any,
-    h3: createHeading(3) as any,
-    h4: createHeading(4) as any,
-    h5: createHeading(5) as any,
-    h6: createHeading(6) as any,
-    img: createImage as any,
-    a: CustomLink as any,
-    Table,
-    CodeBlock,
-};`,
-        language: "tsx",
-        label: "src/components/mdx.tsx"
-      }
-    ]}
-/>
+- **ESP Optimization**: Electric submersible pump system improvements
+- **Gas Lift Design**: Optimization of gas injection strategies
+- **Rod Pumping**: Beam pump system efficiency improvements
+- **Hydraulic Pumping**: High-volume production optimization
 
-As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+#### Surface Facilities
 
-## Hot reload
+- **Separation Systems**: Oil, gas, and water separation optimization
+- **Pipeline Management**: Flow assurance and integrity monitoring
+- **Compression Systems**: Gas compression efficiency improvements
+- **Treatment Facilities**: Processing plant optimization
 
-Hot reload of MDX files is currently not supported, but we're working on it.
+### Reservoir Engineering Projects
+
+Highlight advanced reservoir characterization and development:
+
+#### Field Development
+
+- **Reservoir Characterization**: Geological and petrophysical analysis
+- **Well Placement**: Optimal well spacing and trajectory design
+- **Enhanced Recovery**: EOR project planning and implementation
+- **Secondary Recovery**: Water and gas injection optimization
+
+#### Data Integration
+
+- **Geological Modeling**: 3D reservoir model development
+- **Well Log Analysis**: Formation evaluation and classification
+- **Production Testing**: Well testing and performance analysis
+- **Economic Analysis**: Project feasibility and optimization
+
+## Technical Project Documentation
+
+### Project Structure
+
+Organize your project documentation effectively:
+
+#### Executive Summary
+
+Provide a concise overview for stakeholders:
+
+- **Business Problem**: Clear statement of the engineering challenge
+- **Technical Approach**: Summary of solution methodology
+- **Key Results**: Quantified performance improvements
+- **Economic Impact**: Cost savings and revenue optimization
+
+#### Technical Details
+
+Include comprehensive engineering information:
+
+### Performance Metrics
+
+Track and document project outcomes:
+
+| Metric Category | Key Indicators | Target Improvement |
+|----------------|----------------|-------------------|
+| Production | Oil rate, gas rate, water cut | 10-25% increase |
+| Efficiency | Equipment uptime, energy consumption | 5-15% improvement |
+| Economic | NPV, IRR, payback period | 15-30% enhancement |
+| Safety | Incident rate, environmental compliance | Zero incidents |
+
+#### Engineering Analysis
+
+Detail your technical approach:
+
+```python
+# Example: Production optimization analysis
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestRegressor
+
+# Load production data
+production_data = pd.read_csv('well_production.csv')
+
+# Develop predictive model
+model = RandomForestRegressor(n_estimators=100)
+X = production_data[['pressure', 'temperature', 'water_cut']]
+y = production_data['oil_rate']
+model.fit(X, y)
+
+# Optimize operating parameters
+optimized_params = model.feature_importances_
+```
+
+## Technology Integration
+
+Showcase modern engineering technologies:
+
+### Digital Tools
+
+- **Python Analytics**: Data science and machine learning applications
+- **Reservoir Simulators**: Eclipse, Petrel, and specialized software
+- **SCADA Systems**: Real-time monitoring and control systems
+- **Database Management**: Production data integration and analysis
+
+### Innovation Projects
+
+Highlight cutting-edge engineering solutions:
+
+- **IoT Integration**: Smart sensor networks for field monitoring
+- **Machine Learning**: Predictive analytics for production optimization
+- **Digital Twins**: Virtual field models for scenario analysis
+- **Automation**: Robotic process automation for routine operations
+
+## Project Team Collaboration
+
+Document team-based project management:
+
+### Cross-Functional Teams
+
+Showcase collaboration with:
+
+- **Geoscientists**: Reservoir characterization and modeling
+- **Drilling Engineers**: Well planning and execution
+- **Operations Teams**: Field implementation and monitoring
+- **Economists**: Financial analysis and project evaluation
+
+### Communication Skills
+
+Demonstrate ability to:
+
+- **Technical Presentations**: Clear communication of complex concepts
+- **Stakeholder Reports**: Executive summaries and detailed analysis
+- **Training Materials**: Knowledge transfer and skill development
+- **Industry Collaboration**: Partnership with service providers
+
+## Professional Development
+
+Transform projects into learning opportunities:
+
+### Knowledge Management
+
+- **Lessons Learned**: Document successful approaches and challenges
+- **Best Practices**: Standardize effective engineering procedures
+- **Continuous Improvement**: Implement feedback and optimization
+- **Mentorship**: Guide junior engineers through project experience
+
+### Industry Impact
+
+Showcase broader industry contributions:
+
+- **Technical Papers**: Conference presentations and publications
+- **Industry Awards**: Recognition for outstanding engineering work
+- **Professional Standards**: Contribution to engineering best practices
+- **Training Development**: Educational content for professional growth
+
+This comprehensive approach to project documentation effectively demonstrates your petroleum engineering expertise while providing valuable insights for industry professionals.

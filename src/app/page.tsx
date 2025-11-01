@@ -15,6 +15,8 @@ import { home, about, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { CareerTimeline } from "@/components/enhanced/CareerTimeline";
+import { sampleTimeline, sampleStats } from "@/components/enhanced/sampleData";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -100,9 +102,16 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
+
+      {/* Featured Project */}
+      <RevealFx translateY="16" delay={1.2}>
         <Projects range={[1, 1]} />
       </RevealFx>
+
+      {/* Career Timeline */}
+      <CareerTimeline timeline={sampleTimeline} delay={1.4} />
+
+      {/* Blog Section */}
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">
@@ -123,7 +132,11 @@ export default function Home() {
           </Row>
         </Column>
       )}
+
+      {/* Additional Projects */}
       <Projects range={[2]} />
+
+      {/* Newsletter Signup */}
       <Mailchimp />
     </Column>
   );

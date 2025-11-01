@@ -1,46 +1,61 @@
 ---
-title: "Quick start with Magic Portfolio"
-summary: "Magic Portfolio is a comprehensive, MDX-based, SEO-friendly, responsive portfolio template built with Once UI and Next.js."
+title: "Getting Started with Production Engineering Analytics"
+summary: "A comprehensive guide to implementing data-driven analytics in petroleum engineering operations using Python and modern data science techniques."
 image: "/images/gallery/horizontal-1.jpg"
 publishedAt: "2025-04-23"
-tag: "Magic Portfolio"
+tag: "Petroleum Engineering"
 ---
 
 ## About
 
-Magic Portfolio is a comprehensive, MDX-based, SEO-friendly, responsive portfolio template built with Once UI and Next.js.
+This guide provides a comprehensive introduction to implementing production engineering analytics in oil and gas operations, leveraging data science and petroleum engineering principles to optimize performance.
 
-## License
+## Prerequisites
 
-Magic Portfolio is licensed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). You can only use it for personal purposes, and you must attribute the original work. The attribution is added in the footer by default, but you can place it in any other, visible part of your site.
+- Basic understanding of petroleum engineering concepts
+- Familiarity with Python programming
+- Access to production data sources
 
-Subscribe to the [Once UI Pro plan](https://once-ui.com/pricing) to extend the license to [Dopler CC](https://once-ui.com/products/magic-portfolio).
+## Quick Start
 
-## Quick start
+### Data Collection Setup
 
-Clone the git repository:
+First, establish your data pipeline for production data:
 
-<CodeBlock compact marginBottom="16" codes={[
-  {
-    code: "git clone https://github.com/once-ui-system/magic-portfolio.git",
-    language: "bash"
-  }
-]} />
+```python
+import pandas as pd
+import numpy as np
+from datetime import datetime
 
-Install the necessary dependencies:
+# Load production data
+production_data = pd.read_csv('production_data.csv')
+production_data['date'] = pd.to_datetime(production_data['date'])
+```
 
-<CodeBlock compact marginBottom="16" codes={[
-  {
-    code: "npm install",
-    language: "bash"
-  }
-]} />
+### Key Performance Indicators
 
-Start the local development server:
+Focus on these essential KPIs for production optimization:
 
-<CodeBlock compact marginBottom="16" codes={[
-  {
-    code: "npm run dev",
-    language: "bash"
-  }
-]} />
+- **Production Rate**: Oil and gas production volumes
+- **Water Cut**: Water-oil ratio monitoring
+- **Gas-Oil Ratio**: Production efficiency metrics
+- **Downtime**: Equipment availability and maintenance
+
+### Analytics Implementation
+
+Start with basic production trend analysis:
+
+```python
+# Calculate moving averages for production optimization
+production_data['oil_rate_7day'] = production_data['oil_rate'].rolling(window=7).mean()
+production_data['water_cut_30day'] = production_data['water_cut'].rolling(window=30).mean()
+```
+
+## Next Steps
+
+1. Implement predictive models for equipment maintenance
+2. Set up real-time monitoring dashboards
+3. Integrate reservoir simulation data
+4. Develop automated reporting systems
+
+This foundation will help you build more sophisticated analytics capabilities for production optimization.
