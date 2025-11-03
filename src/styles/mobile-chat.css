@@ -1,0 +1,160 @@
+/* Mobile Chat Interface Optimizations */
+
+/* Mobile-specific utility classes */
+.mobile-button {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-input {
+  font-size: 16px; /* Prevents zoom on iOS */
+  border-radius: 12px;
+  touch-action: manipulation;
+}
+
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Safe area handling for mobile devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 16px);
+}
+
+/* Mobile-specific breakpoints */
+@media (max-width: 480px) {
+  .xs\:inline {
+    display: inline !important;
+  }
+  
+  .mobile-suggestion-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+/* Touch feedback animations */
+.touch-feedback {
+  transition: transform 0.1s ease-in-out;
+}
+
+.touch-feedback:active {
+  transform: scale(0.98);
+}
+
+/* Mobile keyboard adjustments */
+@media (max-width: 768px) {
+  .mobile-chat-container {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for better mobile support */
+  }
+  
+  .mobile-input-area {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .ios-fix {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  
+  .mobile-chat-container {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Android Chrome specific fixes */
+@media screen and (max-width: 768px) {
+  .chrome-fix {
+    /* Fix for Android Chrome viewport issues */
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+/* Improved focus states for mobile */
+@media (max-width: 768px) {
+  .mobile-focus:focus {
+    outline: 2px solid #007acc;
+    outline-offset: 2px;
+  }
+  
+  .mobile-button:focus {
+    outline: 2px solid #007acc;
+    outline-offset: 1px;
+  }
+}
+
+/* Loading states optimized for mobile */
+@media (max-width: 768px) {
+  .mobile-loading {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+/* Message bubble optimizations for mobile */
+@media (max-width: 768px) {
+  .mobile-message {
+    max-width: 85%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .mobile-message-content {
+    padding: 12px 16px;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+}
+
+/* Suggestion card optimizations */
+@media (max-width: 768px) {
+  .mobile-suggestion-card {
+    min-height: 56px;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.3;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-button,
+  .mobile-input,
+  .touch-feedback {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .touch-feedback:active {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .mobile-button {
+    border: 2px solid currentColor;
+  }
+  
+  .mobile-input {
+    border: 2px solid currentColor;
+  }
+}

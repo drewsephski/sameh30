@@ -108,8 +108,106 @@ export default function Home() {
         <Projects range={[1, 1]} />
       </RevealFx>
 
-      {/* Career Timeline */}
-      <CareerTimeline timeline={sampleTimeline} delay={1.4} />
+      {/* Field Production Engineering */}
+      <RevealFx translateY="16" delay={1.3}>
+        <Column fillWidth gap="24" marginY="xl">
+          <Row fillWidth paddingRight="64">
+            <Line maxWidth={48} />
+          </Row>
+          <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
+            <Row flex={1} paddingLeft="l" paddingTop="24">
+              <Heading as="h2" variant="display-strong-xs" wrap="balance">
+                Field Production Engineering
+              </Heading>
+            </Row>
+            <Row flex={3} paddingX="20">
+              <Column gap="16">
+                <Text
+                  wrap="balance"
+                  onBackground="neutral-strong"
+                  variant="heading-default-m"
+                >
+                  Specialized expertise in optimizing production operations across complex energy systems
+                </Text>
+                <Column gap="12">
+                  <Row gap="8" vertical="center">
+                    <Badge
+                      background="brand-alpha-weak"
+                      paddingX="12"
+                      paddingY="4"
+                      onBackground="neutral-strong"
+                      textVariant="label-default-s"
+                    >
+                      Facilities Engineering
+                    </Badge>
+                    <Text
+                      onBackground="neutral-weak"
+                      variant="body-default-s"
+                    >
+                      Design and optimization of production facilities and infrastructure systems
+                    </Text>
+                  </Row>
+                  <Row gap="8" vertical="center">
+                    <Badge
+                      background="brand-alpha-weak"
+                      paddingX="12"
+                      paddingY="4"
+                      onBackground="neutral-strong"
+                      textVariant="label-default-s"
+                    >
+                      Production Assurance
+                    </Badge>
+                    <Text
+                      onBackground="neutral-weak"
+                      variant="body-default-s"
+                    >
+                      Ensuring operational reliability and maximizing production efficiency
+                    </Text>
+                  </Row>
+                  <Row gap="8" vertical="center">
+                    <Badge
+                      background="brand-alpha-weak"
+                      paddingX="12"
+                      paddingY="4"
+                      onBackground="neutral-strong"
+                      textVariant="label-default-s"
+                    >
+                      Production Support
+                    </Badge>
+                    <Text
+                      onBackground="neutral-weak"
+                      variant="body-default-s"
+                    >
+                      Technical expertise and problem-solving for production teams and operations
+                    </Text>
+                  </Row>
+                  <Row gap="8" vertical="center">
+                    <Badge
+                      background="brand-alpha-weak"
+                      paddingX="12"
+                      paddingY="4"
+                      onBackground="neutral-strong"
+                      textVariant="label-default-s"
+                    >
+                      Technical Optimization
+                    </Badge>
+                    <Text
+                      onBackground="neutral-weak"
+                      variant="body-default-s"
+                    >
+                      Data-driven solutions for production performance enhancement and cost optimization
+                    </Text>
+                  </Row>
+                </Column>
+              </Column>
+            </Row>
+          </Row>
+          <Row fillWidth paddingLeft="64" horizontal="end">
+            <Line maxWidth={48} />
+          </Row>
+        </Column>
+      </RevealFx>
+
 
       {/* Blog Section */}
       {routes["/blog"] && (
@@ -132,6 +230,7 @@ export default function Home() {
           </Row>
         </Column>
       )}
+      <CareerTimeline timeline={sampleTimeline} delay={1.4} />
 
       {/* Additional Projects */}
       <Projects range={[2]} />

@@ -21,19 +21,9 @@ const social: Social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/drewsephski",
-  },
-  {
     name: "LinkedIn",
     icon: "linkedin",
     link: "https://www.linkedin.com/in/sam-stehno/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@samstehno",
   },
   {
     name: "Email",
@@ -48,12 +38,12 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as an ${person.role}`,
-  headline: <>Engineering energy solutions for tomorrow</>,
+  headline: <>Innovating the future of energy engineering</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Oxy OEDP</strong>{" "}
+        <strong className="ml-4">Production Engineering</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
@@ -64,8 +54,8 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Sam Stehno, an OEDP Production Engineer at Oxy, where I apply engineering
-      <br /> principles to optimize oil and gas production operations.
+      I'm Sam Stehno, a petroleum engineer specializing in production optimization and
+      <br /> data-driven solutions that maximize operational efficiency in complex energy systems.
     </>
   ),
 };
@@ -84,7 +74,7 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://samstehno@gmail.com",
   },
   intro: {
     display: true,
@@ -106,14 +96,8 @@ const about: About = {
         timeframe: "2025 - Present",
         role: "OEDP Production Engineer",
         achievements: [
-          <>
-            Participating in Oxy's Operations Engineering Development Program, gaining hands-on
-            experience in oil and gas production operations and optimization.
-          </>,
-          <>
-            Applying petroleum engineering principles and data analysis to improve production
-            efficiency and operational performance across multiple assets.
-          </>,
+          "Participating in Oxy's Operations Engineering Development Program, gaining hands-on experience in oil and gas production operations and optimization.",
+          "Applying petroleum engineering principles and data analysis to improve production efficiency and operational performance across multiple assets.",
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
@@ -228,6 +212,38 @@ const about: About = {
           },
         ],
       },
+      {
+        title: "Field Production Engineering",
+        description: (
+          <>Current role as a field production engineer focusing on facilities engineering, production assurance activities, and supporting the production team with technical expertise in production optimization.</>
+        ),
+        tags: [
+          {
+            name: "Facilities Engineering",
+            icon: "engineering",
+          },
+          {
+            name: "Production Assurance",
+            icon: "analytics",
+          },
+          {
+            name: "Team Support",
+            icon: "users",
+          },
+          {
+            name: "Production Optimization",
+            icon: "settings",
+          },
+        ],
+        images: [
+          {
+            src: "/images/gallery/vertical-4.jpg",
+            alt: "Field Production Engineering",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
     ],
   },
 };
@@ -301,4 +317,11 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const chat = {
+  path: "/chat",
+  label: "Chat",
+  title: `AI Chat – ${person.name}`,
+  description: `Chat with AI assistant powered by ${person.name}'s portfolio`,
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, chat };

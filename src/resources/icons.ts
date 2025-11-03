@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 
 import {
   HiArrowUpRight,
@@ -20,6 +20,7 @@ import {
   PiGridFourDuotone,
   PiBookBookmarkDuotone,
   PiImageDuotone,
+  PiChatDuotone,
 } from "react-icons/pi";
 
 import {
@@ -43,6 +44,7 @@ export const iconLibrary: Record<string, IconType> = {
   calendar: HiCalendarDays,
   home: PiHouseDuotone,
   gallery: PiImageDuotone,
+  chat: PiChatDuotone,
   discord: FaDiscord,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,

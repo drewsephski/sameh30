@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Gallery thumbnail hover effects */
 .gallery-image-wrapper {
   position: relative;
@@ -127,23 +129,230 @@
   z-index: 10001;
 }
 
-/* Responsive adjustments */
+/* Enhanced AI response visibility */
+.prose.dark\:prose-invert {
+  color: var(--foreground);
+}
+
+.prose.dark\:prose-invert h1,
+.prose.dark\:prose-invert h2,
+.prose.dark\:prose-invert h3,
+.prose.dark\:prose-invert h4,
+.prose.dark\:prose-invert h5,
+.prose.dark\:prose-invert h6 {
+  color: var(--foreground);
+}
+
+.prose.dark\:prose-invert p {
+  color: var(--foreground);
+}
+
+.prose.dark\:prose-invert strong {
+  color: var(--foreground);
+}
+
+.prose.dark\:prose-invert code {
+  color: var(--foreground);
+  background-color: var(--muted);
+  border-color: var(--border);
+}
+
+.prose.dark\:prose-invert pre {
+  background-color: var(--muted) !important;
+  border-color: var(--border) !important;
+  color: var(--foreground) !important;
+}
+
+.prose.dark\:prose-invert a {
+  color: var(--foreground);
+  text-decoration-color: rgba(var(--brand-rgb, 56, 189, 248), 0.3);
+}
+
+.prose.dark\:prose-invert a:hover {
+  text-decoration-color: rgba(var(--brand-rgb, 56, 189, 248), 0.6);
+}
+
+/* Animated gradient border for enhanced elements */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(45deg,
+    var(--brand-alpha-weak),
+    var(--accent-alpha-weak),
+    var(--brand-alpha-weak));
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease-in-out infinite;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--brand), var(--accent));
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+/* Floating animation for enhanced elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse animation for interactive elements */
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.pulse-gentle {
+  animation: gentle-pulse 2s ease-in-out infinite;
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Gradient shift animation */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Enhanced focus states */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--brand-rgb, 56, 189, 248), 0.5);
+  border-color: var(--brand);
+}
+
+/* Hover glow effect */
+.hover-glow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(var(--brand-rgb, 56, 189, 248), 0.15);
+}
+
+/* Improved accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .floating,
+  .pulse-gentle,
+  .shimmer,
+  .gradient-border {
+    animation: none;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: none;
+  }
+}
+
+/* Mobile responsive enhancements */
 @media (max-width: 768px) {
-  .gallery-modal-container {
-    max-width: 90vw !important;
-    max-height: 50vh !important;
+  .chat-container {
+    padding: 1rem;
   }
   
-  .gallery-modal-nav {
-    width: 32px;
-    height: 32px;
+  /* Enhance touch targets */
+  button,
+  .interactive-element {
+    min-height: 44px;
+    min-width: 44px;
   }
   
-  .gallery-modal-prev {
-    left: 10px;
+  /* Improve readability on small screens */
+  .prose {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
   
-  .gallery-modal-next {
-    right: 10px;
+  /* Adjust avatar sizes for mobile */
+  .message-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  /* Optimize input for mobile */
+  .chat-input {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 0.875rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    padding: 0.75rem;
+  }
+  
+  /* Smaller suggestion buttons on very small screens */
+  .suggestion-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Dark mode specific enhancements */
+.dark .chat-container {
+  background: linear-gradient(135deg,
+    rgba(var(--brand-rgb, 56, 189, 248), 0.05) 0%,
+    rgba(var(--accent-rgb, 239, 68, 68), 0.05) 100%);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .chat-container {
+    border: 2px solid var(--foreground);
+  }
+  
+  .message-bubble {
+    border: 1px solid var(--border);
+  }
+}
+
+/* Chat input container specific styles */
+.chat-input-container {
+  position: relative;
+  z-index: 10;
+}
+
+
+/* Improved suggestion grid for 3 rows */
+.suggestion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .suggestion-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .suggestion-grid {
+    grid-template-columns: 1fr;
   }
 }

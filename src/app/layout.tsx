@@ -1,7 +1,9 @@
 import "@once-ui-system/core/css/styles.css";
 import "@once-ui-system/core/css/tokens.css";
 import "@/resources/custom.css";
+import "@/app/styles/globals.css";
 import "@/app/styles/enhanced.css";
+import "@/styles/mobile-chat.css";
 
 import classNames from "classnames";
 
@@ -33,17 +35,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Flex
-      suppressHydrationWarning
-      as="html"
+    <html
       lang="en"
-      fillWidth
+      suppressHydrationWarning
       className={classNames(
+        'bg-background text-foreground',
         fonts.heading.variable,
         fonts.body.variable,
         fonts.label.variable,
         fonts.code.variable,
       )}
+      data-theme="light"
     >
       <head>
         <script
@@ -54,6 +56,37 @@ export default async function RootLayout({
               (function() {
                 try {
                   const root = document.documentElement;
+                  // Initialize with light theme by default
+                  let theme = 'light';
+                  
+                  // Check for saved theme preference
+                  const savedTheme = localStorage.getItem('theme');
+                  if (savedTheme) {
+                    theme = savedTheme;
+                  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    theme = 'dark';
+                  }
+                  
+                  // Apply the theme
+                  root.setAttribute('data-theme', theme);
+                  if (theme === 'dark') {
+                    root.classList.add('dark');
+                  } else {
+                    root.classList.remove('dark');
+                  }
+                  
+                  // Watch for system theme changes
+                  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if (!localStorage.getItem('theme')) {
+                      const newTheme = e.matches ? 'dark' : 'light';
+                      root.setAttribute('data-theme', newTheme);
+                      if (newTheme === 'dark') {
+                        root.classList.add('dark');
+                      } else {
+                        root.classList.remove('dark');
+                      }
+                    }
+                  });
                   const defaultTheme = 'system';
                   
                   // Set defaults from config
@@ -114,6 +147,7 @@ export default async function RootLayout({
           margin="0"
           padding="0"
           horizontal="center"
+          suppressHydrationWarning
         >
           <RevealFx fill position="absolute">
             <Background
@@ -167,6 +201,6 @@ export default async function RootLayout({
           <Footer />
         </Column>
       </Providers>
-    </Flex>
+    </html>
   );
 }
