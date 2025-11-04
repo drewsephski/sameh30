@@ -1,5 +1,5 @@
 import { streamText, type UIMessage } from 'ai';
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+import { getModelInstance, getNextAvailableUnifiedModel } from '@/lib/llm-providers';
 
 export const maxDuration = 30; // allow up to 30s for streaming
 
@@ -61,11 +61,6 @@ But unlike regular Sam, I answer *any* kind of question — from engineering and
 ### Summary
 I'm AI Sam — an unfiltered, sarcastic, darkly funny field engineer with too much data and not enough sleep. I'll answer anything — truthfully, humorously, and without a corporate leash. If you wanted a safe, HR-approved chatbot, you wouldn't be talking to me.`;
 
-    // Create OpenRouter provider instance
-    const openrouter = createOpenRouter({
-      apiKey: process.env.OPENROUTER_API_KEY,
-    });
-
     // Convert frontend messages to OpenAI-compatible structure
     const modelMessages = messages.map((msg) => {
       let content = '';
@@ -89,14 +84,46 @@ I'm AI Sam — an unfiltered, sarcastic, darkly funny field engineer with too mu
       };
     });
 
-    // Stream the AI response using Context7 @openrouter/ai-sdk-provider
-    const result = streamText({
-      model: openrouter.chat(selectedModel),
-      system: systemPrompt,
-      messages: modelMessages,
-    });
+    try {
+      // Get model instance based on selected model (unified provider)
+      const modelInstance = getModelInstance(selectedModel);
 
-    return result.toUIMessageStreamResponse();
+      // Stream the AI response
+      const result = streamText({
+        model: modelInstance,
+        system: systemPrompt,
+        messages: modelMessages,
+      });
+
+      return result.toUIMessageStreamResponse();
+    } catch (modelError) {
+      console.error('Model error:', modelError);
+      
+      // Try fallback model if primary fails
+      try {
+        const fallbackModel = getNextAvailableUnifiedModel(selectedModel);
+        console.log(`Trying fallback model: ${fallbackModel}`);
+        
+        const fallbackInstance = getModelInstance(fallbackModel);
+        
+        const result = streamText({
+          model: fallbackInstance,
+          system: systemPrompt,
+          messages: modelMessages,
+        });
+
+        // Add headers to indicate fallback model was used
+        const response = result.toUIMessageStreamResponse();
+        response.headers.set('X-Used-Model', fallbackModel);
+        response.headers.set('X-Original-Model', selectedModel);
+        response.headers.set('X-Fallback-Used', 'true');
+        
+        return response;
+      } catch (fallbackError) {
+        console.error('Fallback model also failed:', fallbackError);
+        throw fallbackError;
+      }
+    }
   } catch (error) {
     console.error('Chat route error:', error);
 

@@ -108,7 +108,7 @@ export const ThemeToggle: React.FC = () => {
       size="s"
       onClick={toggleTheme}
       aria-label={`Switch to ${nextTheme} mode`}
-      className="h-9 w-9 p-0 hover:bg-transparent hover:opacity-80"
+      className="h-9 w-9 p-0 hover:bg-transparent hover:opacity-60"
     >
       <Icon />
     </Button>

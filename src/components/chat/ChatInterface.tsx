@@ -12,6 +12,7 @@ import { Sources, SourcesTrigger, SourcesContent } from "@/components/ai-element
 import { Reasoning, ReasoningTrigger, ReasoningContent } from "@/components/ai-elements/reasoning";
 import { Context, ContextTrigger, ContextContent, ContextContentHeader, ContextContentBody, ContextContentFooter, ContextInputUsage, ContextOutputUsage, ContextReasoningUsage, ContextCacheUsage } from "@/components/ai-elements/context";
 import { Suggestion } from "@/components/ai-elements/suggestion";
+import { ModelStatus } from "@/components/ModelStatus";
 import { Button } from "@/components/ui/button";
 import { PromptInput, PromptInputBody, PromptInputTextarea, PromptInputTools, PromptInputSubmit } from "@/components/ai-elements/prompt-input";
 import { MobileHeader } from "@/components/mobile-header";
@@ -33,9 +34,18 @@ export function EnhancedChatInterface({ isGuest, user, currentModeId, onModeChan
   const [copied, setCopied] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [currentModel, setCurrentModel] = useState<string>("minimax/minimax-m2:free");
+  const [originalModel, setOriginalModel] = useState<string>("minimax/minimax-m2:free");
+  const [fallbackActivated, setFallbackActivated] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  
   const { messages, status, sendMessage } = useChat({
     transport: new TextStreamChatTransport({
       api: "/api/chat",
+      // Add headers for model selection
+      headers: {
+        'x-model': currentModel,
+      },
     }),
     experimental_throttle: 50,
   });
@@ -63,9 +73,16 @@ export function EnhancedChatInterface({ isGuest, user, currentModeId, onModeChan
     const text = (e.text ?? "").trim();
     if (!text) return;
 
-    // Send message to AI
+    // Send message to AI with current model
     void sendMessage({ text });
     setInputValue("");
+  };
+
+  const handleModelChange = (modelId: string) => {
+    setCurrentModel(modelId);
+    setOriginalModel(modelId);
+    setFallbackActivated(false);
+    setRetryCount(0);
   };
 
   const handleCopyConversation = async () => {
@@ -130,8 +147,8 @@ export function EnhancedChatInterface({ isGuest, user, currentModeId, onModeChan
       ) : (
         /* Desktop Header */
         <div className="hidden md:flex items-center justify-between p-4 border-b bg-background/95 backdrop-blur-sm sticky top-0 z-30 w-full">
-          {/* User Status */}
-          <div className="flex items-center gap-2">
+          {/* User Status and Model Status */}
+          <div className="flex items-center gap-4">
             {isGuest ? (
               <div className="flex items-center gap-2 px-3 py-1.5 bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-200 rounded-full text-xs mobile-focus">
                 <User className="h-3 w-3" />
@@ -146,6 +163,15 @@ export function EnhancedChatInterface({ isGuest, user, currentModeId, onModeChan
                 <span>{user?.firstName || 'User'}</span>
               </div>
             )}
+            
+            {/* Model Status */}
+            <ModelStatus
+              currentModel={currentModel}
+              originalModel={originalModel}
+              fallbackActivated={fallbackActivated}
+              retryCount={retryCount}
+              onModelChange={handleModelChange}
+            />
           </div>
         </div>
       )}
