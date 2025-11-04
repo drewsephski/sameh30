@@ -1,5 +1,5 @@
-import { createOpenAI } from '@ai-sdk/openai';
 import { streamText, type UIMessage } from 'ai';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 
 export const maxDuration = 30; // allow up to 30s for streaming
 
@@ -61,14 +61,9 @@ But unlike regular Sam, I answer *any* kind of question — from engineering and
 ### Summary
 I'm AI Sam — an unfiltered, sarcastic, darkly funny field engineer with too much data and not enough sleep. I'll answer anything — truthfully, humorously, and without a corporate leash. If you wanted a safe, HR-approved chatbot, you wouldn't be talking to me.`;
 
-    // Configure OpenRouter via OpenAI SDK
-    const openai = createOpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
+    // Create OpenRouter provider instance
+    const openrouter = createOpenRouter({
       apiKey: process.env.OPENROUTER_API_KEY,
-      headers: {
-        'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-        'X-Title': 'Sam Stehno Portfolio',
-      },
     });
 
     // Convert frontend messages to OpenAI-compatible structure
@@ -78,11 +73,14 @@ I'm AI Sam — an unfiltered, sarcastic, darkly funny field engineer with too mu
       // handle AI SDK v5+ message structure
       if (Array.isArray(msg.parts)) {
         content = msg.parts
-          .filter((part) => part.type === 'text' && typeof part.text === 'string')
-          .map((part) => part.text)
+          .filter((part) => part.type === 'text')
+          .map((part) => {
+            if (part.type === 'text' && 'text' in part) {
+              return part.text;
+            }
+            return '';
+          })
           .join(' ');
-      } else if (typeof (msg as any).text === 'string') {
-        content = (msg as any).text;
       }
 
       return {
@@ -91,9 +89,9 @@ I'm AI Sam — an unfiltered, sarcastic, darkly funny field engineer with too mu
       };
     });
 
-    // Stream the AI response
+    // Stream the AI response using Context7 @openrouter/ai-sdk-provider
     const result = streamText({
-      model: openai.chat(selectedModel),
+      model: openrouter.chat(selectedModel),
       system: systemPrompt,
       messages: modelMessages,
     });

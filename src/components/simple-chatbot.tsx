@@ -67,9 +67,15 @@ const SimpleChatbot = () => {
       return;
     }
 
-    // Use the working AI SDK v5+ message format
-    sendMessage({ text: message.text || 'Sent with attachments',
-     });
+    // Use the working AI SDK v5+ message format with dynamic model
+    sendMessage(
+      {
+        text: message.text || 'Sent with attachments'
+      },
+      {
+        body: { model }
+      }
+    );
     setText('');
   };
 
