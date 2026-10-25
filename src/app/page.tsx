@@ -16,6 +16,7 @@ import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { CareerTimeline } from "@/components/enhanced/CareerTimeline";
+import { StoryClipSection } from "@/components/enhanced/StoryClipSection";
 import { sampleTimeline, sampleStats } from "@/components/enhanced/sampleData";
 
 export async function generateMetadata() {
@@ -234,6 +235,8 @@ export default function Home() {
 
       {/* Additional Projects */}
       <Projects range={[2]} />
+
+      <StoryClipSection delay={1.5} />
 
       {/* Newsletter Signup */}
       <Mailchimp />
